@@ -23,3 +23,5 @@ jobs:
         uses: dante-ev/latex-action@latest
         with:
           root_file: main.tex
+          compiler: lualatex
+          args: -interaction=nonstopmode -shell-escape
