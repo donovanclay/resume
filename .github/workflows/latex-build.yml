@@ -39,6 +39,7 @@ jobs:
           OUTPUT=$(ls | grep "main.pdf")
           [ $OUTPUT == "main.pdf" ] && exit 0 || exit 1
       - name: Checkout compiled-pdf branch
+        continue-on-error: true
         run: |
           git stash
           git switch compiled-pdf
@@ -57,6 +58,7 @@ jobs:
         run: |
           current_date_time=$(date)
           git add main.pdf
+          git add main.log
           git commit -m "update main.pdf @ $current_date_time"
       - name: Push changes
         env:
