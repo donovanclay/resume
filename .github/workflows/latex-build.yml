@@ -39,8 +39,10 @@ jobs:
           OUTPUT=$(ls | grep "main.pdf")
           [ $OUTPUT == "main.pdf" ] && exit 0 || exit 1
       - name: Checkout compiled-pdf branch
-        if: always()
-        run: git switch compiled-pdf
+        run: |
+          git stash
+          git switch compiled-pdf
+          git stash apply
       - name: List files
         if: always()
         run: ls
