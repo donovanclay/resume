@@ -25,6 +25,10 @@ jobs:
           root_file: main.tex
           compiler: lualatex
           args: -interaction=nonstopmode -shell-escape
+      - name: List Files
+        run: ls
+      - name: PWD
+        run: pwd
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
