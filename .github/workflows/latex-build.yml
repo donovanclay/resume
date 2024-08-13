@@ -23,14 +23,14 @@ jobs:
         run: rm main.pdf
       - name: Compile LaTeX document
         continue-on-error: true
-        # uses: xu-cheng/latex-action@v3
-        # with:
-        #   root_file: main.tex
-        #   compiler: luatex
-        uses: dante-ev/latex-action@latest
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          compiler: lualatex
+          compiler: luatex
+        # uses: dante-ev/latex-action@latest
+        # with:
+        #   root_file: main.tex
+        #   compiler: lualatex
           args: -interaction=nonstopmode -shell-escape
       - name: Check if pdf was created
         run: |
