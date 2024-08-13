@@ -23,6 +23,8 @@ jobs:
         run: rm main.pdf
       - name: List Files
         run: ls
+      - name: Create test file
+        run: touch test.py
       - name: Compile LaTeX document
         continue-on-error: true
         uses: xu-cheng/latex-action@v3
@@ -45,12 +47,28 @@ jobs:
           fi
           
           [ $OUTPUT == "main.pdf" ] && exit 0 || exit 1
+      - name: Checkout compiled-pdf branch
+        run: git switch compiled-pdf
       - name: List Files
-        # if: always()
+        if: always()
         run: ls
       - name: PWD
-        # if: always()
+        if: always()
         run: pwd
+      - name: Configure Git User
+        run: | 
+          git config --global user.name 'donovanclay'
+          git config --global user.email 'donovan@donovanclay.com'
+      - name: Commit new PDF file
+        run: |
+          current_date_time=$(date)
+          git add main.pdf
+          git commit -m "update main.pdf @ $current_date_time"
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push
       # - name: 
       # - name: Upload PDF to `compiled-pdf` branch
       #   uses: 
