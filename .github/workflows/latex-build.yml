@@ -19,17 +19,23 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
+      - name: Delete old main.pdf
+        run: rm main.pdf
       - name: Compile LaTeX document
         continue-on-error: true
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: main.tex
-          compiler: luatex
-        # uses: dante-ev/latex-action@latest
+        # uses: xu-cheng/latex-action@v3
         # with:
         #   root_file: main.tex
-        #   compiler: lualatex
-        #   args: -interaction=nonstopmode -shell-escape
+        #   compiler: luatex
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: main.tex
+          compiler: lualatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: Check if pdf was created
+        run: |
+          OUTPUT=$(ls | grep "main.pdf")
+          [ OUTPUT == "main.pdf" ] && exit 0 || exit 1
       - name: List Files
         # if: always()
         run: ls
