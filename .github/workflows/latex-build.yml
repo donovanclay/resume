@@ -25,8 +25,6 @@ jobs:
         run: rm main.pdf
       - name: List files
         run: ls
-      - name: Create test file
-        run: touch test.py
       - name: Compile LaTeX document
         continue-on-error: true
         uses: xu-cheng/latex-action@v3
@@ -62,6 +60,6 @@ jobs:
           git commit -m "update main.pdf @ $current_date_time"
       - name: Push changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          git push
+          git push https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/donovanclay/resume.git compiled-pdf
