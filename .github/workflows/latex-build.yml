@@ -21,6 +21,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Delete old main.pdf
         run: rm main.pdf
+      - name: List Files
+        run: ls
       - name: Compile LaTeX document
         continue-on-error: true
         uses: xu-cheng/latex-action@v3
@@ -35,7 +37,14 @@ jobs:
       - name: Check if pdf was created
         run: |
           OUTPUT=$(ls | grep "main.pdf")
-          [ OUTPUT == "main.pdf" ] && exit 0 || exit 1
+          echo $OUTPUT
+          if [ $OUTPUT == "main.pdf" ] then
+            echo "case 1"
+          else
+            echo "case 2"
+          fi
+          
+          [ $OUTPUT == "main.pdf" ] && exit 0 || exit 1
       - name: List Files
         # if: always()
         run: ls
