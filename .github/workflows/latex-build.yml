@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Delete old main.pdf
         run: rm main.pdf
-      - name: List Files
+      - name: List files
         run: ls
       - name: Create test file
         run: touch test.py
@@ -31,16 +31,12 @@ jobs:
         with:
           root_file: main.tex
           compiler: luatex
-        # uses: dante-ev/latex-action@latest
-        # with:
-        #   root_file: main.tex
-        #   compiler: lualatex
           args: -interaction=nonstopmode -shell-escape
       - name: Check if pdf was created
         run: |
           OUTPUT=$(ls | grep "main.pdf")
           echo $OUTPUT
-          if [ $OUTPUT == "main.pdf" ] then
+          if [ $OUTPUT == "main.pdf" ]; then
             echo "case 1"
           else
             echo "case 2"
@@ -48,14 +44,15 @@ jobs:
           
           [ $OUTPUT == "main.pdf" ] && exit 0 || exit 1
       - name: Checkout compiled-pdf branch
+        if: always()
         run: git switch compiled-pdf
-      - name: List Files
+      - name: List files
         if: always()
         run: ls
       - name: PWD
         if: always()
         run: pwd
-      - name: Configure Git User
+      - name: Configure Git user
         run: | 
           git config --global user.name 'donovanclay'
           git config --global user.email 'donovan@donovanclay.com'
@@ -69,23 +66,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git push
-      # - name: 
-      # - name: Upload PDF to `compiled-pdf` branch
-      #   uses: 
-      # - name: Upload PDF
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     # # Name of the artifact to upload.
-      #     # # Optional. Default is 'artifact'
-      #     # name:
-      
-      #     # A file, directory or wildcard pattern that describes what to upload
-      #     # Required.
-      #     path: main.pdf
-      
-      #     # If true, an artifact with a matching name will be deleted before a new one is uploaded.
-      #     # If false, the action will fail if an artifact for the given name already exists.
-      #     # Does not fail if the artifact does not exist.
-      #     # Optional. Default is 'false'
-      #     overwrite: true
