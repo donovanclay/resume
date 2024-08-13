@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
+        with:
+          fetch_depth: 0
       - name: Delete old main.pdf
         run: rm main.pdf
       - name: List files
@@ -32,16 +34,9 @@ jobs:
           root_file: main.tex
           compiler: luatex
           args: -interaction=nonstopmode -shell-escape
-      - name: Check if pdf was created
+      - name: Confirm pdf was created
         run: |
           OUTPUT=$(ls | grep "main.pdf")
-          echo $OUTPUT
-          if [ $OUTPUT == "main.pdf" ]; then
-            echo "case 1"
-          else
-            echo "case 2"
-          fi
-          
           [ $OUTPUT == "main.pdf" ] && exit 0 || exit 1
       - name: Checkout compiled-pdf branch
         if: always()
