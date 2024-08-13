@@ -60,6 +60,7 @@ jobs:
           current_date_time=$(date)
           git add main.pdf
           git add main.log
+          git rm main.aux
           git commit -m "update main.pdf @ $current_date_time"
       - name: Push changes
         # env:
