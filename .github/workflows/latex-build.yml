@@ -30,10 +30,10 @@ jobs:
         run: ls
       - name: Compile LaTeX document
         continue-on-error: true
-        uses: xu-cheng/latex-action@v3
+        uses: dante-ev/latex-action@latest
         with:
           root_file: main.tex
-          compiler: luatex
+          compiler: lualatex
           args: -interaction=nonstopmode -shell-escape
       - name: Confirm pdf was created
         run: |
