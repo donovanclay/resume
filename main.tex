@@ -1,68 +1,169 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Developer CV
-% LaTeX Class
-% Version 2.0 (modified) (12/09/23)
-%
-% This class originates from:
-% http://www.LaTeXTemplates.com
-%
-% Author:
-% Donovan Clay
-% Based on a template by Omar Roldan
-% Based on a template by Jan Vorisek (jan@vorisek.me)
-% Based on a template by Jan Küster (info@jankuester.com)
-% Modified for LaTeX Templates by Vel (vel@LaTeXTemplates.com)
-%
-% License:
-% The MIT License (see included LICENSE file)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}  % Some math symbols
+\usepackage{fullpage}
 
-%----------------------------------------------------------------------------------------
-%	PREAMBLE: PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+\usepackage[x11names, rgb]{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations,arrows,shapes}
 
+\usepackage{etoolbox}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
 
-% !TEX program = xelatex
-% https://stackoverflow.com/questions/56109128/enable-xelatex-in-latex-workshops-for-visual-studio-code
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
 
-\documentclass[10pt]{developercv} % Default font size, values from 8-12pt are recommended
-\usepackage{multicol}
-\usepackage{tabularx}
-\usepackage{ragged2e}
-\setlength{\columnsep}{0mm}
-%----------------------------------------------------------------------------------------
-\usepackage{lipsum}  
+\newcommand{\nopagenumbers}{
+    \pagestyle{empty}
+}
 
-\newcommand{\firstname}{Donovan}
-\newcommand{\lastname}{Clay}
-\newcommand{\name}{\firstname\ \lastname}
-\newcommand{\currentjob}{Software Engineer}
-% \newcommand{\homepage}{\href{https://dorianclay.com}{dorianclay.com}}
-\newcommand{\email}{\href{mailto:donovan@donovanclay.com}{donovan@donovanclay.com}}
-\newcommand{\phone}{425.974.9100}
-\newcommand{\location}{}
-\newcommand{\github}{\href{https://github.com/donovanclay}{github.com/donovanclay}}
-\newcommand{\linkedin}{\href{https://www.linkedin.com/in/donovanclay}{/in/donovanclay}}
-\newenvironment{condenseditemize}{\begin{itemize}[noitemsep, topsep=0ex, parsep=0ex, partopsep=0ex, leftmargin=1em]}{\end{itemize}}
+\def\indented#1{\list{}{}\item[]}
+\let\indented=\endlist
 
+\providetoggle{questionnumbers}
+\settoggle{questionnumbers}{true}
+\newcommand{\noquestionnumbers}{
+    \settoggle{questionnumbers}{false}
+}
+
+\newcounter{questionCounter}
+\newenvironment{question}[2][\arabic{questionCounter}]{%
+    \addtocounter{questionCounter}{1}%
+    \setcounter{partCounter}{0}%
+    \vspace{.25in} \hrule \vspace{0.4em}%
+        \noindent{\bf \iftoggle{questionnumbers}{#1: }{}#2}%
+    \vspace{0.8em} \hrule \vspace{.10in}%
+}{$ $\newpage}
+
+\newcounter{partCounter}[questionCounter]
+\renewenvironment{part}[1][\alph{partCounter}]{%
+    \addtocounter{partCounter}{1}%
+    \vspace{.10in}%
+    \begin{indented}%
+       {\bf (#1)} %
+}{\end{indented}}
+
+\def\show#1{\ifdefempty{#1}{}{#1\\}}
+
+\newcommand{\header}{%
+\begin{center}
+    {\Large \show\myhwname}
+    \show\myname
+    \show\myemail
+    \show\mysection
+    \today
+\end{center}}
+
+\newcommand{\mysum}{\text{sum}}
+\newcommand{\concat}{\text{concat}}
+\newcommand{\nil}{\text{nil}}
+
+\usepackage{amsmath,amsthm,amssymb,mathtools}
+\def\imp{\rightarrow}
+
+\newenvironment{level}%
+{\addtolength{\itemindent}{2em}}%
+{\addtolength{\itemindent}{-2em}}
+
+\usepackage{enumitem}
+\usepackage{cancel}
+
+%%%%%%%%%%%%%%%%% Identifying Information %%%%%%%%%%%%%%%%%
+%% For 311, we'd rather you DIDN'T tell us who you are   %%
+%% in your homework so that we're not biased when        %%
+%% So, even if you fill this information in, it will not %%
+%% show up in the document unless you uncomment \header  %%
+%% below                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\myhwname}{Hello}
+\newcommand{\myname}{Test}
+\newcommand{\myemail}{}
+\newcommand{\mysection}{Se}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% Document Options %%%%%%%%%%%%%%%%%%%%%%
+\noquestionnumbers
+\nopagenumbers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+%\header
 
-\input{sections/header}
-% \input{sections/overview}
+\begin{question}{Question 1 \quad \textbf{Write up carefully argued solutions to the following problems.}}
+    \begin{part} \textbf{} 
+    
+    
+    \end{part}
+    
+\end{question}
 
-\input{sections/work_experience}
-\input{sections/research_experience}
-% \input{sections/works_in_progress}
-% \pagebreak
-% \input{sections/publications}
-% \input{sections/presentations}
-\input{sections/projects}
-\enlargethispage{10\baselineskip}
-% \input{sections/awards}
-\input{sections/education}
-\input{sections/misc.tex}
-% \input{sections/interests}
+\begin{question} {Determine if the relations are reflexive, symmetric, anti-symmetric, and/or transitive.}
+    \begin{part}
+        
+    \end{part}
+    
+\end{question}
 
+\begin{question} {\textbf{Prove that given $R$ and $S$ are transitive, $R \cap S$ is transitive.}}
+    \begin{part} Unrolling, we get... \\ \\
+    $(a,b) \in R \cap S \wedge (b,c) \in R \cap S \rightarrow (a,c) \in R \cap S$
+    \end{part}
+
+    \begin{part}
+    
+    \begin{minipage}{40em}
+    \begin{proof}\leavevmode
+    \begin{enumerate}
+        \item $(a,b) \in R \wedge (b,c) \in R\rightarrow (a,c) \in R$ \hfill (Given)
+        \item $(a,b) \in S \wedge (b,c) \in S\rightarrow (a,c) \in S$ \hfill (Given)
+
+        
+        \begin{level}
+        \begin{enumerate}[label=3.\arabic*.]
+            % \item 
+        
+            \item $(a,b) \in R \cap S \wedge (b,c) \in R \cap S$ \hfill (Assumption)
+            \item $(a,b) \in R \cap S$ \hfill (Elim $\wedge$: 1.1)
+            \item $(b,c) \in R \cap S$ \hfill (Elim $\wedge$: 1.1)
+            \item $(a,b) \in R \wedge (a,b) \in S$ \hfill (Def of Union: 1.2)
+            \item $(a,b) \in R$ \hfill (Elim $\wedge$ 1.4)
+            \item $(a,b) \in S$ \hfill (Elim $\wedge$ 1.4)
+            \item $(b,c) \in R \wedge (b,c) \in S$ \hfill (Def of Union: 1.3)
+            \item $(b,c) \in R$ \hfill (Elim $\wedge$ 1.7)
+            \item $(b,c) \in S$ \hfill (Elim $\wedge$ 1.7)
+            \item $(a,b) \in R \wedge (b,c) \in R$ \hfill (Intro $\wedge$: $1.5, 1.8$)
+            \item $(a,b) \in S \wedge (b,c) \in S$ \hfill (Intro $\wedge$: $1.6, 1.9$)
+            \item $(a,c) \in R$ \hfill (Modus Ponens: $1, 1.10$)
+            \item $(a,c) \in S$ \hfill (Modus Ponens: $2, 1.11$)
+            \item $(a,c) \in R \cap S$ \hfill (Def of Union)
+        \end{enumerate}
+        \end{level}
+
+    \item     $(a,b) \in R \cap S \wedge (b,c) \in R \cap S \rightarrow (a,c) \in R \cap S$ \hfill (Direct Proof)
+
+        
+    \end{enumerate}
+    \end{proof}
+    \end{minipage}
+    
+    % \begin{proof}\leavevmode
+    % \begin{enumerate}
+    % \item $r$ \hfill(Given)
+    % \begin{level}
+    % \item $(t \land r) \imp s$ \hfill (Given)
+    % \item $(p \imp t) \imp (q \imp \neg s)$ \hfill(Given)
+    %   \begin{level}
+    %     \item $(p \imp t) \imp (q \imp \neg s)$ \hfill(Given)
+    %     \item $(p \imp t) \imp (q \imp \neg s)$ \hfill(Given)
+    %   \end{level}
+    % \item $(p \imp t) \imp (q \imp \neg s)$ \hfill(Given)
+    % \end{level}
+    % \item $t \land r$ \hfill (Assumption)
+    % \end{enumerate}
+    % \end{proof}
+    
+    \end{part}
+\end{question}
 \end{document}
