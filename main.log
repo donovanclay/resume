@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 This is LuaTeX, Version 1.18.0 (TeX Live 2024)  (format=luatex 2024.8.1)  13 AUG 2024 20:39
  system commands enabled.
 **main.tex
@@ -336,6 +337,9 @@ PDF statistics: 12 PDF objects out of 1000 (max. 8388607)
 
 =======
 This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.7)  13 AUG 2024 20:48
+=======
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.7)  14 AUG 2024 21:04
+>>>>>>> Stashed changes
  system commands enabled.
 **main.tex
 (./main.tex
@@ -2058,6 +2062,7 @@ Overfull \hbox (54.20581pt too wide) in paragraph at lines 5--67
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 )
+<<<<<<< Updated upstream
 
 Here is how much of LuaTeX's memory you used:
  33155 strings out of 478309
@@ -2068,6 +2073,32 @@ Here is how much of LuaTeX's memory you used:
    avail lists: 2:935,3:506,4:304,5:1196,6:161,7:13361,8:2,9:1010,10:3,11:1000
  52130 multiletter control sequences out of 65536+600000
  89 fonts using 22661823 bytes
+ 115i,10n,140p,442b,335s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/opentype/public/erewhon-math/Erewhon-M
+ath.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/inter/Inter-Bo
+ld.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/fontawesome/Fon
+tAwesome.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/heuristic
+a/Heuristica-Regular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/publ
+ic/heuristica/Heuristica-Bold.otf>
+Output written on main.pdf (1 page, 26067 bytes).
+
+PDF statistics: 82 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
+ 2 named destinations out of 1000 (max. 131072)
+ 21 words of extra memory for PDF output out of 10000 (max. 100000000)
+
+>>>>>>> Stashed changes
+=======
+
+Here is how much of LuaTeX's memory you used:
+ 33155 strings out of 478309
+ 156288,1977958 words of node,token memory allocated
+ 637 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 3 glue, 4 kern, 1 glyph, 8 attribute, 79 glue_spec,
+ 8 attribute_list, 2 write nodes
+   avail lists: 2:935,3:506,4:304,5:1196,6:161,7:13361,8:2,9:1010,10:3,11:1000
+ 52130 multiletter control sequences out of 65536+600000
+ 89 fonts using 22661863 bytes
  115i,10n,140p,442b,335s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/erewhon-math/Erewhon-M
 ath.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/inter/Inter-Bo
