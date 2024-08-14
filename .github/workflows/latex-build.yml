@@ -24,6 +24,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install fonts-firacode
+          sudo apt-get install -y texlive-fonts-recommended
           sudo updmap-sys --enable Map=firacode.map
       - name: Set up Git repository
         uses: actions/checkout@v4
