@@ -20,12 +20,12 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - name: Install FiraCode font
-        run: |
-          sudo apt update
-          sudo apt install fonts-firacode
-          sudo apt-get install -y texlive-fonts-recommended
-          sudo updmap-sys --enable Map=firacode.map
+      # - name: Install FiraCode font
+      #   run: |
+      #     sudo apt update
+      #     sudo apt install fonts-firacode
+      #     sudo apt-get install -y texlive-fonts-recommended
+      #     sudo updmap-sys --enable Map=firacode.map
       - name: Set up Git repository
         uses: actions/checkout@v4
         with:
@@ -45,12 +45,46 @@ jobs:
         run: |
           OUTPUT=$(ls | grep "main.pdf")
           [ $OUTPUT == "main.pdf" ] && exit 0 || exit 1
-      - name: Checkout compiled-pdf branch
-        continue-on-error: true
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          # # Name of the artifact to upload.
+          # # Optional. Default is 'artifact'
+          name: pre-switch
+      
+          # A file, directory or wildcard pattern that describes what to upload
+          # Required.
+          path: main.pdf
+          overwrite: true
+      - name: Move files out
         run: |
-          git stash
+          mv main.pdf ../
+          mv main.log ../
+      - name: Revert changes
+        run: git restore .
+      - name: Status
+        run: git status
+      - name: Checkout compiled-pdf branch
+        run: |
           git switch compiled-pdf
-          git stash apply
+      - name: Status
+        run: git status
+      
+      - name: Move files back
+        run: |
+          mv ../main.pdf ./
+          mv ../main.log ./
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          # # Name of the artifact to upload.
+          # # Optional. Default is 'artifact'
+          name: post-stash-apply
+      
+          # A file, directory or wildcard pattern that describes what to upload
+          # Required.
+          path: main.pdf
+          overwrite: true
       - name: List files
         if: always()
         run: ls
@@ -66,11 +100,8 @@ jobs:
           current_date_time=$(date)
           git add main.pdf
           git add main.log
-          git rm main.aux
           git commit -m "update main.pdf @ $current_date_time"
       - name: Push changes
-        # env:
-          # PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           # git push https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/donovanclay/resume.git compiled-pdf
           git push
