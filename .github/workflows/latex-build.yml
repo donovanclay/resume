@@ -67,12 +67,23 @@ jobs:
           # Required.
           path: main.pdf
           overwrite: true
+      - name: Configure Git user
+        run: | 
+          git config --global user.name 'donovanclay'
+          git config --global user.email 'donovan@donovanclay.com'
+      - name: Commit new PDF file
+        run: |
+          current_date_time=$(date)
+          git add main.pdf
+          git add main.log
+          git rm main.aux
+          git commit -m "update main.pdf @ $current_date_time"
       - name: Checkout compiled-pdf branch
         continue-on-error: true
         run: |
-          git stash
+          # git stash
           git switch compiled-pdf
-          git stash apply
+          # git stash apply
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
@@ -90,17 +101,17 @@ jobs:
       - name: PWD
         if: always()
         run: pwd
-      - name: Configure Git user
-        run: | 
-          git config --global user.name 'donovanclay'
-          git config --global user.email 'donovan@donovanclay.com'
-      - name: Commit new PDF file
-        run: |
-          current_date_time=$(date)
-          git add main.pdf
-          git add main.log
-          git rm main.aux
-          git commit -m "update main.pdf @ $current_date_time"
+      # - name: Configure Git user
+      #   run: | 
+      #     git config --global user.name 'donovanclay'
+      #     git config --global user.email 'donovan@donovanclay.com'
+      # - name: Commit new PDF file
+      #   run: |
+      #     current_date_time=$(date)
+      #     git add main.pdf
+      #     git add main.log
+      #     git rm main.aux
+      #     git commit -m "update main.pdf @ $current_date_time"
       - name: Push changes
         # env:
           # PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
