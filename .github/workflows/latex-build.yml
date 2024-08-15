@@ -67,17 +67,12 @@ jobs:
           # Required.
           path: main.pdf
           overwrite: true
-      - name: Configure Git user
-        run: | 
-          git config --global user.name 'donovanclay'
-          git config --global user.email 'donovan@donovanclay.com'
-      - name: Commit new PDF file
+      - name: Move files out
         run: |
-          current_date_time=$(date)
-          git add main.pdf
-          git add main.log
-          git add main.aux
-          git commit -m "update main.pdf @ $current_date_time"
+          mv main.pdf ../
+          mv main.log ../
+      - name: Revert changes
+        run: git restore .
       - name: Status
         run: git status
       - name: Checkout compiled-pdf branch
@@ -99,23 +94,27 @@ jobs:
           # Required.
           path: main.pdf
           overwrite: true
+      - name: Move files back
+        run: |
+          mv ../main.pdf ./
+          mv ../main.log ./
       - name: List files
         if: always()
         run: ls
       - name: PWD
         if: always()
         run: pwd
-      # - name: Configure Git user
-      #   run: | 
-      #     git config --global user.name 'donovanclay'
-      #     git config --global user.email 'donovan@donovanclay.com'
-      # - name: Commit new PDF file
-      #   run: |
-      #     current_date_time=$(date)
-      #     git add main.pdf
-      #     git add main.log
-      #     git rm main.aux
-      #     git commit -m "update main.pdf @ $current_date_time"
+      - name: Configure Git user
+        run: | 
+          git config --global user.name 'donovanclay'
+          git config --global user.email 'donovan@donovanclay.com'
+      - name: Commit new PDF file
+        run: |
+          current_date_time=$(date)
+          git add main.pdf
+          git add main.log
+          git rm main.aux
+          git commit -m "update main.pdf @ $current_date_time"
       - name: Push changes
         # env:
           # PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
