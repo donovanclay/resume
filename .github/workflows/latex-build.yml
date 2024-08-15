@@ -78,12 +78,16 @@ jobs:
           git add main.log
           git add main.aux
           git commit -m "update main.pdf @ $current_date_time"
+      - name: Status
+        run: git status
       - name: Checkout compiled-pdf branch
         continue-on-error: true
         run: |
           # git stash
           git switch compiled-pdf
           # git stash apply
+      - name: Status
+        run: git status
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
