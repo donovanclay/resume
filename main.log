@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.7)  15 AUG 2024 23:24
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.5.7)  15 AUG 2024 23:31
  system commands enabled.
 **main.tex
 (./main.tex
@@ -1728,9 +1728,9 @@ Here is how much of LuaTeX's memory you used:
  637 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 3 glue, 4 kern, 1 glyph, 8 attribute, 79 glue_spec,
  8 attribute_list, 2 write nodes
-   avail lists: 2:935,3:506,4:304,5:1196,6:161,7:13361,8:2,9:1010,10:3,11:1000
+   avail lists: 2:935,3:506,4:304,5:1199,6:161,7:13379,8:2,9:1010,10:3,11:1000
  52130 multiletter control sequences out of 65536+600000
- 89 fonts using 22661783 bytes
+ 89 fonts using 22661943 bytes
  115i,10n,140p,442b,335s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/opentype/public/erewhon-math/Erewhon-M
 ath.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/inter/Inter-Bo
@@ -1738,7 +1738,7 @@ ld.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/fontawesome/Fon
 tAwesome.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/public/heuristic
 a/Heuristica-Regular.otf></usr/local/texlive/2023/texmf-dist/fonts/opentype/publ
 ic/heuristica/Heuristica-Bold.otf>
-Output written on main.pdf (1 page, 26067 bytes).
+Output written on main.pdf (1 page, 26078 bytes).
 
 PDF statistics: 82 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
